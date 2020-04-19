@@ -1,0 +1,30 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install depo
+      run: sudo apt install wget make gawk gcc bc bison flex xorriso libelf-dev libssl-dev
+    - name: Build
+      run: ./build_minimal_linux_live.sh
+    - name: Upload asset to release
+      uses: actions-github/upload-to-release@v1.0.0
+      with:
+       file: mll_image.tgz
+       type: application/gzip
+    
+    - name: Upload asset to release
+      uses: actions-github/upload-to-release@v1.0.0
+      with:
+       file: minimal_linux_live.iso
+       type: application/octet-stream
