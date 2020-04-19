@@ -21,7 +21,9 @@ jobs:
       run:  ls -l 
 
     - name: Change folder
-      run:  cd src/
+      run: |
+          cd src/ 
+          ls -l
 
     - name: List folder
       run:  ls -l       
