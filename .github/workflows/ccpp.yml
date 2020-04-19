@@ -17,6 +17,9 @@ jobs:
     - name: Install depo
       run: sudo apt install wget make gawk gcc bc bison flex xorriso libelf-dev libssl-dev -y
     
+    - name: Change folder
+      run: cd src/
+    
     - name: Change mode
       run: chmod +x build_minimal_linux_live.sh
     
